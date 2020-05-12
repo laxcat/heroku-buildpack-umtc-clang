@@ -14,7 +14,11 @@ if [ $HAS_CLANG -eq 1 ]; then
 else
   echo "-----> Clang not found, installing..."
   cd $CACHE_DIR
-  bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+  # bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+
+  wget https://apt.llvm.org/llvm.sh
+  chmod +x llvm.sh
+  sudo ./llvm.sh
 fi
 
 echo "-----> Compiling app"
