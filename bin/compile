@@ -9,7 +9,7 @@ CACHE_DIR=$2
 echo "-----> Compiling app"
 
 cd /bin
-ls -la
+find /
 
 # cd $BUILD_DIR
 # clang++ main.cpp -o main
