@@ -7,11 +7,9 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 
 cd $CACHE_DIR
-ls -la
-
 HAS_CLANG=1
 command -v clang++ >/dev/null 2>&1 || { HAS_CLANG=0; }
 
-echo $HAS_CLANG
+echo Has Clang\? $HAS_CLANG
 
 echo "-----> Doing default"
