@@ -6,19 +6,25 @@ set -o pipefail
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-HAS_CLANG=1
-command -v clang++ >/dev/null 2>&1 || { HAS_CLANG=0; }
-
-if [ $HAS_CLANG -eq 1 ]; then
-  echo "-----> Clang found"
-else
-  echo "-----> Clang not found, installing..."
-  cd $CACHE_DIR
-  # bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-
-  wget https://apt.llvm.org/llvm.sh
-  chmod +x llvm.sh
-  ./llvm.sh
-fi
-
 echo "-----> Compiling app"
+
+cd $BUILD_DIR
+clang++ main.cpp -o main
+
+
+
+
+
+
+# HAS_CLANG=1
+# command -v clang++ >/dev/null 2>&1 || { HAS_CLANG=0; }
+
+# if [ $HAS_CLANG -eq 1 ]; then
+#   echo "-----> Clang found"
+# else
+#   echo "-----> Clang not found, installing..."
+#   cd $CACHE_DIR
+#   # bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+
+
+# fi
