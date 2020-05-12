@@ -9,7 +9,7 @@ CACHE_DIR=$2
 HAS_CLANG=1
 command -v clang++ >/dev/null 2>&1 || { HAS_CLANG=0; }
 
-if [ $HAS_CLANG ]; then
+if [ $HAS_CLANG -eq 1 ]; then
   echo "-----> Clang found"
 else
   echo "-----> Clang not found, installing..."
