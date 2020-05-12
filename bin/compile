@@ -10,8 +10,8 @@ echo "-----> Compiling app"
 
 compgen -c
 
-# cd $BUILD_DIR
-# clang++ main.cpp -o main
+cd $BUILD_DIR
+clang++-6.0 main.cpp -o main
 
 
 
