@@ -8,5 +8,5 @@ CACHE_DIR=$2
 
 echo "-----> Compiling app"
 
-cd $CACHE_DIR
-clang++-6.0 /app/main.cpp -o $BUILD_DIR/main
+# cd $CACHE_DIR
+# clang++-6.0 /app/main.cpp -o $BUILD_DIR/main
