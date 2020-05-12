@@ -18,7 +18,7 @@ else
 
   wget https://apt.llvm.org/llvm.sh
   chmod +x llvm.sh
-  sudo ./llvm.sh
+  ./llvm.sh
 fi
 
 echo "-----> Compiling app"
