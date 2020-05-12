@@ -8,11 +8,10 @@ CACHE_DIR=$2
 
 echo "-----> Compiling app"
 
-compgen -c
+# cd $BUILD_DIR
+# clang++-6.0 main.cpp -o main
 
-cd $BUILD_DIR
-clang++-6.0 main.cpp -o main
-
+find /app
 
 
 
