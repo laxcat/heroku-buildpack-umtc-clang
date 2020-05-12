@@ -11,7 +11,8 @@ echo "-----> Compiling app"
 # cd $BUILD_DIR
 # clang++-6.0 main.cpp -o main
 
-find /app
+cd /
+ls -la
 
 
 
