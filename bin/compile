@@ -8,8 +8,8 @@ CACHE_DIR=$2
 
 echo "-----> Compiling app"
 
-cd /bin
-find /
+cd /
+ls -la
 
 # cd $BUILD_DIR
 # clang++ main.cpp -o main
