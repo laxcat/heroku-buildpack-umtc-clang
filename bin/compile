@@ -8,25 +8,5 @@ CACHE_DIR=$2
 
 echo "-----> Compiling app"
 
-# cd $BUILD_DIR
-# clang++-6.0 main.cpp -o main
-
-cd /
-ls -la
-
-
-
-
-
-# HAS_CLANG=1
-# command -v clang++ >/dev/null 2>&1 || { HAS_CLANG=0; }
-
-# if [ $HAS_CLANG -eq 1 ]; then
-#   echo "-----> Clang found"
-# else
-#   echo "-----> Clang not found, installing..."
-#   cd $CACHE_DIR
-#   # bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-
-
-# fi
+cd $CACHE_DIR
+clang++-6.0 /app/main.cpp -o $BUILD_DIR/main
