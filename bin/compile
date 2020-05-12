@@ -8,11 +8,5 @@ CACHE_DIR=$2
 
 echo "-----> Compiling app"
 
-echo "fart"
-cd $BUILD_DIR
-pwd
-ls -la
-echo "another fart"
-
-# cd $CACHE_DIR
-# clang++-6.0 /app/main.cpp -o $BUILD_DIR/main
+cd $CACHE_DIR
+clang++-6.0 $BUILD_DIR/main.cpp -o $BUILD_DIR/main
