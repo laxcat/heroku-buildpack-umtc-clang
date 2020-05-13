@@ -20,7 +20,6 @@ wget https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.gz
 tar xzvf boost_1_73_0.tar.gz
 cd boost_1_73_0/
 BOOST_DIR=`pwd`
-PATH=$PATH:$BOOST_DIR
 ls -la
 
 
@@ -30,7 +29,7 @@ echo "-----> Building Crow"
 cd $CROW_DIR
 mkdir build
 cd build
-cmake ..
+cmake .. -DBoost_INCLUDE_DIRS=$BOOST_DIR
 make
 
 
