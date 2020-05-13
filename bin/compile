@@ -20,6 +20,9 @@ if [ ! -d "boost_1_73_0" ]; then
   tar xzvf boost_1_73_0.tar.gz
   cd boost_1_73_0
   BOOST_ROOT=`pwd`
+  ./bootstrap.sh --prefix=/usr/
+  ./b2 --with-libraries=system,thread
+  ./b2 install
   ls -la
 fi
 
