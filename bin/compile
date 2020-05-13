@@ -21,7 +21,7 @@ if [ ! -d "boost_1_73_0" ]; then
   cd boost_1_73_0
   BOOST_ROOT=`pwd`
   ./bootstrap.sh --prefix=/usr/
-  ./b2 --with-system=system --with-thread
+  ./b2 --with-system --with-thread
   ./b2 install
   ls -la
 fi
