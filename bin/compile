@@ -51,6 +51,7 @@ if [ ! -d $LIBS_DIR/pistache ]; then
 cd $LIBS_DIR
 git clone https://github.com/oktal/pistache.git
 cd pistache
+find .
 PISTACHE_DIR=`pwd`
 # mkdir build
 # cd build
