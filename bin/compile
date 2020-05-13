@@ -2,7 +2,7 @@
 
 ###
 echo "-----> Setup"
-set -e -o pipefail -o xtrace
+set -e -o pipefail
 
 BUILD_DIR=$1
 CACHE_DIR=$2
@@ -64,12 +64,13 @@ echo "-----> Compiling app"
 
 cd $CACHE_DIR
 
+set -o xtrace
 clang++-6.0 \
 -std=c++17 \
 $BUILD_DIR/src/main.cpp \
 -Wall \
--I$BUILD_DIR/src \
 -iquote$PISTACHE_DIR/include \
+-I$BUILD_DIR/src \
 -o $BUILD_DIR/main \
 -v \
-
+set +o xtrace
