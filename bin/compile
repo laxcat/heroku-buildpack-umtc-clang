@@ -2,8 +2,7 @@
 
 ###
 echo "-----> Setup"
-set -e
-set -o pipefail
+set -e -o pipefail -o xtrace
 
 BUILD_DIR=$1
 CACHE_DIR=$2
