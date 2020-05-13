@@ -27,6 +27,8 @@ ls -la
 echo "-----> Building Crow"
 
 cd $CROW_DIR
+echo "Boost root:"
+echo $BOOST_ROOT
 mkdir build
 cd build
 cmake ..
