@@ -12,7 +12,7 @@ CROW_DIR=$BUILD_DIR/libs/crow
 
 ###
 echo "-----> Installing Boost"
-apt-get install libboost-all-dev
+sudo apt-get install libboost-all-dev
 
 
 ###
