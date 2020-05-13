@@ -32,7 +32,7 @@ echo "Boost root:"
 echo $BOOST_ROOT
 mkdir build
 cd build
-cmake .. -DBOOST_ROOT=$BOOST_ROOT -BOOST_LIBRARYDIR=$BOOST_ROOT/lib
+cmake .. -DBOOST_ROOT=$BOOST_ROOT -DBOOST_LIBRARYDIR=$BOOST_ROOT/lib
 make
 
 
