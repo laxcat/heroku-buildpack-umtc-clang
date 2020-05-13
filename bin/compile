@@ -21,7 +21,7 @@ if [ ! -d "boost_1_73_0" ]; then
   cd boost_1_73_0
   BOOST_ROOT=`pwd`
   ./bootstrap.sh --prefix=/usr/
-  ./b2 --with-system --with-thread
+  ./b2 --with-system --with-thread --without-graph_parallel --without-mpi
   ./b2 install
   ls -la
 fi
@@ -50,6 +50,7 @@ $BUILD_DIR/src/main.cpp \
 -Wall \
 # -lboost \
 -L$CROW_DIR/build \
+-L$BOOST_ROOT/stage/lib \
 -I$BUILD_DIR/src \
 -I$BOOST_ROOT/boost \
 -I$CROW_DIR/include \
