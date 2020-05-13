@@ -19,16 +19,9 @@ cd $CACHE_DIR
 wget https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.gz
 tar xzvf boost_1_73_0.tar.gz
 cd boost_1_73_0/
-
-# apt-get update
-# apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev
-
-./bootstrap.sh --prefix=/usr/
-
-./b2
-
-./b2 install
-
+BOOST_DIR=`pwd`
+PATH=$PATH:$BOOST_DIR
+ls -la
 
 
 ###
@@ -53,6 +46,7 @@ $BUILD_DIR/src/main.cpp \
 -lboost \
 -L$CROW_DIR/build \
 -I$BUILD_DIR/src \
+-I$BOOST_DIR/src \
 -I$CROW_DIR/include \
 -o $BUILD_DIR/main \
 -v \
