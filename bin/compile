@@ -7,36 +7,56 @@ set -o pipefail
 
 BUILD_DIR=$1
 CACHE_DIR=$2
-CROW_DIR=$BUILD_DIR/libs/crow
+# CROW_DIR=$BUILD_DIR/libs/crow
+LIBS_DIR=$CACHE_DIR/libs
 
 
-###
-echo "-----> Installing Boost"
-# apt-get update
-# apt-get install libboost-all-dev
-cd $CACHE_DIR
-if [ ! -d "boost_1_73_0" ]; then
-  wget https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.gz
-  tar xzvf boost_1_73_0.tar.gz
-  cd boost_1_73_0
-  BOOST_ROOT=`pwd`
-  ./bootstrap.sh --prefix=/usr/
-  ./b2 --with-system --with-thread --without-graph_parallel --without-mpi
-  ./b2 install
-  ls -la
+# ###
+# echo "-----> Installing Boost"
+# # apt-get update
+# # apt-get install libboost-all-dev
+# cd $CACHE_DIR
+# if [ ! -d "boost_1_73_0" ]; then
+#   wget https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.gz
+#   tar xzvf boost_1_73_0.tar.gz
+#   cd boost_1_73_0
+#   BOOST_ROOT=`pwd`
+#   ./bootstrap.sh --prefix=/usr/
+#   ./b2 --with-system --with-thread --without-graph_parallel --without-mpi
+#   ./b2 install
+#   ls -la
+# fi
+
+
+# ###
+# echo "-----> Building Crow"
+
+# cd $CROW_DIR
+# echo "Boost root:"
+# echo $BOOST_ROOT
+# mkdir build
+# cd build
+# cmake .. -DBOOST_ROOT=$BOOST_ROOT -DBOOST_LIBRARYDIR=$BOOST_ROOT/libs
+# make
+
+
+echo "-----> Installing Libs"
+if [ ! -d $LIBS_DIR ]; then
+  mkdir $LIBS_DIR
 fi
 
 
 ###
-echo "-----> Building Crow"
-
-cd $CROW_DIR
-echo "Boost root:"
-echo $BOOST_ROOT
+echo "-----> Installing Pistache"
+cd $LIBS_DIR
+git clone https://github.com/oktal/pistache.git
+cd pistache
+PISTACHE_DIR=`pwd`
 mkdir build
 cd build
-cmake .. -DBOOST_ROOT=$BOOST_ROOT -DBOOST_LIBRARYDIR=$BOOST_ROOT/libs
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
 make
+sudo make install
 
 
 ###
@@ -48,12 +68,7 @@ clang++-6.0 \
 -std=c++17 \
 $BUILD_DIR/src/main.cpp \
 -Wall \
-# -lboost \
--L$CROW_DIR/build \
--L$BOOST_ROOT/stage/lib \
 -I$BUILD_DIR/src \
--I$BOOST_ROOT/boost \
--I$CROW_DIR/include \
 -o $BUILD_DIR/main \
 -v \
 
