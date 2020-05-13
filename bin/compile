@@ -12,8 +12,21 @@ CROW_DIR=$BUILD_DIR/libs/crow
 
 ###
 echo "-----> Installing Boost"
+# apt-get update
+# apt-get install libboost-all-dev
+wget -O boost_1_55_0.tar.gz https://sourceforge.net/projects/boost/files/boost/1.55.0/boost_1_55_0.tar.gz/download
+tar xzvf boost_1_55_0.tar.gz
+cd boost_1_55_0/
+
 apt-get update
-apt-get install libboost-all-dev
+apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev
+
+./bootstrap.sh --prefix=/usr/
+
+./b2
+
+./b2 install
+
 
 
 ###
