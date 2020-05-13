@@ -5,11 +5,12 @@ set -o pipefail
 
 BUILD_DIR=$1
 CACHE_DIR=$2
-CROW_BUILD_DIR=$BUILD_DIR/libs/crow/build
+CROW_DIR=$BUILD_DIR/libs/crow
 
 echo "-----> Building Crow"
-mkdir $CROW_BUILD_DIR
-cd $CROW_BUILD_DIR
+cd $CROW_DIR
+mkdir build
+cd build
 cmake ..
 make
 
@@ -19,11 +20,12 @@ cd $CACHE_DIR
 
 clang++-6.0 \
 -std=c++17 \
-$BUILD_DIR/main.cpp \
+$BUILD_DIR/src/main.cpp \
 -Wall \
 -lboost \
--L$CROW_BUILD_DIR \
--I$BUILD_DIR \
+-L$CROW_DIR/build \
+-I$BUILD_DIR/src \
+-I$CROW_DIR/include \
 -o $BUILD_DIR/main \
 -v \
 
