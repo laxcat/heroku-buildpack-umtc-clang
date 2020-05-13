@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+###
+echo "-----> Setup"
 set -e
 set -o pipefail
 
@@ -7,13 +9,23 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 CROW_DIR=$BUILD_DIR/libs/crow
 
+
+###
+echo "-----> Installing Boost"
+apt install libboost-all-dev
+
+
+###
 echo "-----> Building Crow"
+
 cd $CROW_DIR
 mkdir build
 cd build
 cmake ..
 make
 
+
+###
 echo "-----> Compiling app"
 
 cd $CACHE_DIR
