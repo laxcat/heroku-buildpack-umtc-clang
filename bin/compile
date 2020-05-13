@@ -5,11 +5,25 @@ set -o pipefail
 
 BUILD_DIR=$1
 CACHE_DIR=$2
+CROW_BUILD_DIR=$BUILD_DIR/libs/crow/build
 
-echo "-----> Compiling app"
-
+echo "-----> Building Crow"
+mkdir $CROW_BUILD_DIR
+cd $CROW_BUILD_DIR
+cmake ..
+make
 
 echo "-----> Compiling app"
 
 cd $CACHE_DIR
-clang++-6.0 $BUILD_DIR/main.cpp -Wall -lboost -I$BUILD_DIR -o $BUILD_DIR/main -v
+
+clang++-6.0 \
+-std=c++17 \
+$BUILD_DIR/main.cpp \
+-Wall \
+-lboost \
+-L$CROW_BUILD_DIR \
+-I$BUILD_DIR \
+-o $BUILD_DIR/main \
+-v \
+
