@@ -8,5 +8,8 @@ CACHE_DIR=$2
 
 echo "-----> Compiling app"
 
+
+echo "-----> Compiling app"
+
 cd $CACHE_DIR
 clang++-6.0 $BUILD_DIR/main.cpp -Wall -lboost -I$BUILD_DIR -o $BUILD_DIR/main -v
